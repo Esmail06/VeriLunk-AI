@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VeriLunk AI — Instant Phishing URL Check</title>
+<meta name="description" content="VeriLunk AI analyzes any URL's structure in real time and explains exactly why it may be a phishing attempt — no link is ever opened or sent to a third party." />
+<link rel="icon" href="data:," />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="ambient ambient-one"></div>
+<div class="ambient ambient-two"></div>
+
+<header class="shell nav">
+  <a class="brand" href="#top">
+    <span class="brand-mark">◈</span>
+    <span>
+      <span>Veri<span>Lunk</span> AI</span>
+      <small>URL RISK SCANNER</small>
+    </span>
+  </a>
+  <div class="nav-status"><i></i> Structural analysis · no link is opened</div>
+</header>
+
+<section class="shell hero" id="top">
+  <p class="eyebrow"><span>◆</span> AI-Powered Phishing Detection</p>
+  <h1>Know if a link is <em>safe</em> before you click it.</h1>
+  <p>VeriLunk AI inspects a URL's structure — domain, encoding, wording, and known impersonation patterns — and gives you a clear, explainable risk score in seconds.</p>
+
+  <form class="scanner" id="scanForm">
+    <label for="urlInput">Paste a URL to scan</label>
+    <div class="input-row">
+      <span class="link-icon">⇲</span>
+      <input id="urlInput" name="url" type="text" placeholder="https://example.com/login" autocomplete="off" required />
+      <button type="submit">Scan URL <span>→</span></button>
+    </div>
+    <small>We never open the link or send it to a third party. Analysis runs on the URL's structure only.</small>
+  </form>
+
+  <div class="quick-links">
+    <span>Try:</span>
+    <button type="button" data-sample="https://www.google.com">google.com</button>
+    <button type="button" data-sample="http://secure-paypa1-login.com/verify">secure-paypa1-login.com</button>
+    <button type="button" data-sample="http://192.168.1.1/account/update">IP-based link</button>
+  </div>
+</section>
+
+<section class="shell result" id="result" hidden>
+  <div class="result-summary">
+    <div class="verdict-icon" id="verdictIcon">!</div>
+    <div>
+      <span class="section-label">Scan result</span>
+      <h2 id="verdict">—</h2>
+      <p id="verdictText">—</p>
+    </div>
+    <div class="risk-score">
+      <span id="score">0</span>
+      <small>Risk score<br />out of 100</small>
+    </div>
+  </div>
+
+  <div class="meter"><div id="meterFill"></div></div>
+
+  <div class="result-grid">
+    <div class="reasons-card">
+      <div class="card-title">Why this result <small id="indicatorCount">0 indicators</small></div>
+      <ul id="reasons"></ul>
+    </div>
+    <div class="details-card">
+      <div class="card-title">URL details</div>
+      <dl id="details"></dl>
+    </div>
+  </div>
+
+  <p class="disclaimer">This is an assistive structural indicator, not a final security decision. Always verify sensitive links through an official, trusted channel.</p>
+</section>
+
+<section class="shell features">
+  <div>
+    <span class="section-label">Why VeriLunk AI</span>
+    <h2>Explainable risk detection, built for everyday browsing.</h2>
+    <p style="color:var(--muted);font-size:14px;line-height:1.8;margin:0">Every score comes with the exact reasons behind it, so you can make an informed decision instead of trusting a black box.</p>
+  </div>
+  <div class="feature-grid">
+    <article>
+      <b>01</b>
+      <h3>Domain intelligence</h3>
+      <p>Flags IP-based links, excessive subdomains, hyphens, and lookalike brand domains using edit-distance matching.</p>
+    </article>
+    <article>
+      <b>02</b>
+      <h3>Wording analysis</h3>
+      <p>Detects urgent or credential-related wording commonly used in phishing and social-engineering attempts.</p>
+    </article>
+    <article>
+      <b>03</b>
+      <h3>Privacy by design</h3>
+      <p>The scanned URL is never opened in your browser and never leaves the structural analysis running locally.</p>
+    </article>
+  </div>
+</section>
+
+<footer class="shell">
+  <span>© 2026 VeriLunk AI</span>
+  <span>Assistive tool — not a substitute for security judgment</span>
+</footer>
+
+<script src="app.js"></script>
+<script>
+  document.querySelectorAll('.quick-links button[data-sample]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.getElementById('urlInput').value = btn.dataset.sample;
+      document.getElementById('scanForm').requestSubmit();
+    });
+  });
+</script>
+</body>
+</html>
